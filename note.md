@@ -38,4 +38,28 @@ module.exports = {
 3.安装```npm install html-webpack-plugin -D``` 和 ```npm install webpack-dev-server -D```，再在```package.json scripts```中配置```"dev": "webpack server --config webpack.config.js"```
 
 4.执行```npm run dev```
+ 
+ ## babel配置步骤
+1.安装 ```npm install @babel/core @babel/preset-env babel-loader -D```
+
+2.创建```.babelrc```,在里面写
+```
+{
+    "presets": ["@babel/preset-env"]
+}
+```
+3.在```webpack.config.js```里面添加
+```
+ module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: ['babel-loader'],
+                include: path.join(__dirname, 'src'),
+                exclude: /node_modules/
+            }
+        ]
+    },
+```
+
 
